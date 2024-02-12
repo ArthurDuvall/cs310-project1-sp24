@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         
         ClassSchedule schedule = new ClassSchedule();
+       
         
         try {
             
@@ -15,6 +16,7 @@ public class Main {
             
             List<String[]> csvOriginal = schedule.getCsv();
             JsonObject jsonOriginal = schedule.getJson();
+            schedule.convertJsonToCsvString(jsonOriginal);
             
             // Print Total Sections Found in CSV and JSON Data (should be equal)
             
@@ -22,6 +24,8 @@ public class Main {
             
             JsonArray sections = (JsonArray)jsonOriginal.get("section");
             System.out.println("Sections Found (JSON): " + sections.size());
+            
+            
             
         }
         catch (Exception e) { e.printStackTrace(); }
